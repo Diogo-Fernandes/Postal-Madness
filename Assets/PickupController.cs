@@ -44,7 +44,7 @@ public class PickupController : MonoBehaviour
         Vector3 distanceToPlayer = player.position - transform.position;
         if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !slotFull) PickUp();
 
-        //Drop if equipped and 'E' is pressed
+        //Throw if equipped and 'Q' is pressed
         if (equipped && Input.GetKeyDown(KeyCode.Q)) Drop();
     }
 
@@ -95,7 +95,7 @@ public class PickupController : MonoBehaviour
 
         //Add random torque rotation when throwing 
         float random = Random.Range(-1f, 1f);
-        rb.AddTorque(new Vector3(random, random, random) * 30);
+        rb.AddTorque(new Vector3(random, random, random) * 10);
 
 
     }
