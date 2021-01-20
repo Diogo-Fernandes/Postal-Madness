@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MeterPlayer : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class MeterPlayer : MonoBehaviour
     public float currentTime;
 
     public MeterScript meterScript;
+    public GameObject gameOver;
 
     private float timedebug;
     private float fillTime =0f;
@@ -15,6 +17,7 @@ public class MeterPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameOver.SetActive(false);
         currentTime = 8;
     }
 
@@ -28,11 +31,19 @@ public class MeterPlayer : MonoBehaviour
         if (timedebug == 24)
         {
             Debug.Log("CHEGOU");
+            gameOver.SetActive(true);
         }
         else
         {
             meterScript.SetTime(timedebug);
         }
         Debug.Log(timedebug);
+    }
+
+    IEnumerator waitGameOver()
+    {
+        yield return new WaitForSeconds(3);
+
+        SceneManager.LoadScene("StartMenu");
     }
 }
