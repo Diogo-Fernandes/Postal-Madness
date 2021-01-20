@@ -12,9 +12,15 @@ public class PickupController : MonoBehaviour
     public MeshRenderer trueNews;
     public TriggerMail triggerMail;
     public Outline outline1;
+    public GameObject box1;
     public Outline outline2;
+    public GameObject box2;
     public Outline outline3;
+    public GameObject box3;
     public Outline outline4;
+    public GameObject box4;
+    public Outline outline5;
+    public GameObject box5;
 
     public float pickUpRange;
     public float dropForwardForce, dropUpwardForce;
@@ -23,17 +29,23 @@ public class PickupController : MonoBehaviour
     public static bool slotFull;
 
     private Outline[] homeArray;
+    private GameObject[] boxArray;
     private int rng;
 
     private void Start()
     {
-        homeArray = new Outline[] { outline1, outline2, outline3, outline4 };
+        homeArray = new Outline[] { outline1, outline2, outline3, outline4, outline5 };
+        boxArray = new GameObject[] { box1, box2, box3, box4, box5 };
+
         for(int i = 0; i< homeArray.Length; i++)
         {
             homeArray[i].enabled = false;
+            boxArray[i].SetActive(false);
+          
         }
         rng = Random.Range(0, homeArray.Length);
         homeArray[rng].enabled = true;
+        boxArray[rng].SetActive(true);
 
         //Setup
         if (!equipped)
@@ -66,10 +78,12 @@ public class PickupController : MonoBehaviour
             for (int i = 0; i < homeArray.Length; i++)
             {
                 homeArray[i].enabled = false;
+                boxArray[i].SetActive(false);
             }
             rng = Random.Range(0, homeArray.Length);
             Debug.Log(homeArray[rng]);
             homeArray[rng].enabled = true;
+            boxArray[rng].SetActive(true);
             //e assign uma nova casa random para ficar outlined, mostrar no minimapa e poder consumir um novo chip
         }
 
