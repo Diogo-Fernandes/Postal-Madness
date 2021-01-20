@@ -10,6 +10,11 @@ public class PickupController : MonoBehaviour
     public Transform player, gunContainer, fpsCam;
     public MeshRenderer fakeNews;
     public MeshRenderer trueNews;
+    public TriggerMail triggerMail;
+    public Outline outline1;
+    public Outline outline2;
+    public Outline outline3;
+    public Outline outline4;
 
     public float pickUpRange;
     public float dropForwardForce, dropUpwardForce;
@@ -17,8 +22,19 @@ public class PickupController : MonoBehaviour
     public bool equipped;
     public static bool slotFull;
 
+    private Outline[] homeArray;
+    private int rng;
+
     private void Start()
     {
+        homeArray = new Outline[] { outline1, outline2, outline3, outline4 };
+        for(int i = 0; i< homeArray.Length; i++)
+        {
+            homeArray[i].enabled = false;
+        }
+        rng = Random.Range(0, homeArray.Length);
+        homeArray[rng].enabled = true;
+
         //Setup
         if (!equipped)
         {
@@ -43,6 +59,19 @@ public class PickupController : MonoBehaviour
         //Check if player is in range and 'E' is pressed
         Vector3 distanceToPlayer = player.position - transform.position;
         if (!equipped && distanceToPlayer.magnitude <= pickUpRange && Input.GetKeyDown(KeyCode.E) && !slotFull) PickUp();
+
+        if (!equipped && triggerMail.NewMailTriggerCheck && Input.GetKeyDown(KeyCode.E))
+        {
+            PickUp();
+            for (int i = 0; i < homeArray.Length; i++)
+            {
+                homeArray[i].enabled = false;
+            }
+            rng = Random.Range(0, homeArray.Length);
+            Debug.Log(homeArray[rng]);
+            homeArray[rng].enabled = true;
+            //e assign uma nova casa random para ficar outlined, mostrar no minimapa e poder consumir um novo chip
+        }
 
         //Throw if equipped and 'Q' is pressed
         if (equipped && Input.GetKeyDown(KeyCode.Q)) Drop();
