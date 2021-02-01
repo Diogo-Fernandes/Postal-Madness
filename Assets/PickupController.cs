@@ -21,6 +21,10 @@ public class PickupController : MonoBehaviour
     public GameObject box4;
     public Outline outline5;
     public GameObject box5;
+    public Outline outline6;
+    public GameObject box6;
+    public Outline outline7;
+    public GameObject box7;
 
     public float pickUpRange;
     public float dropForwardForce, dropUpwardForce;
@@ -34,8 +38,8 @@ public class PickupController : MonoBehaviour
 
     private void Start()
     {
-        homeArray = new Outline[] { outline1, outline2, outline3, outline4, outline5 };
-        boxArray = new GameObject[] { box1, box2, box3, box4, box5 };
+        homeArray = new Outline[] { outline1, outline2, outline3, outline4, outline5, outline6, outline7 };
+        boxArray = new GameObject[] { box1, box2, box3, box4, box5, box6, box7 };
 
         for(int i = 0; i< homeArray.Length; i++)
         {
@@ -89,6 +93,11 @@ public class PickupController : MonoBehaviour
 
         //Throw if equipped and 'Q' is pressed
         if (equipped && Input.GetKeyDown(KeyCode.Q)) Drop();
+
+        if (equipped)
+        {
+            trueNews.transform.position = fakeNews.transform.position;
+        }
     }
 
     private void PickUp()
@@ -137,8 +146,8 @@ public class PickupController : MonoBehaviour
         rb.AddForce(fpsCam.up * dropUpwardForce, ForceMode.Impulse);
 
         //Add random torque rotation when throwing 
-        float random = Random.Range(-1f, 1f);
-        rb.AddTorque(new Vector3(random, random, random) * 10);
+        /*float random = Random.Range(0f, 1f);
+        rb.AddTorque(new Vector3(random, random, random) * 10);*/
 
 
     }

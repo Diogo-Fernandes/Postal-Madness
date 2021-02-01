@@ -21,6 +21,79 @@ TagManager:
   - q11
   - q12
   - q13
+  - c1
+  - c2
+  - c3
+  - c4
+  - c5
+  - c6
+  - c7
+  - c8
+  - c9
+  - c10
+  - c11
+  - c12
+  - c13
+  - c14
+  - c15
+  - c16
+  - d1
+  - d2
+  - d3
+  - d4
+  - e1
+  - e2
+  - e3
+  - e4
+  - e5
+  - e6
+  - f1
+  - f2
+  - f3
+  - f4
+  - f5
+  - f6
+  - f7
+  - f8
+  - f9
+  - f10
+  - f11
+  - f12
+  - f13
+  - f14
+  - f15
+  - f16
+  - g1
+  - g2
+  - g3
+  - g4
+  - g5
+  - g6
+  - g7
+  - g8
+  - g9
+  - h1
+  - h2
+  - h3
+  - h4
+  - h5
+  - h6
+  - h7
+  - h8
+  - h9
+  - h10
+  - h11
+  - h12
+  - h13
+  - i1
+  - i2
+  - i3
+  - i4
+  - i5
+  - i6
+  - i7
+  - i8
+  - i9
   layers:
   - Default
   - TransparentFX
@@ -57,4 +130,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: cars
+    uniqueID: 2846098059
     locked: 0
