@@ -9,6 +9,8 @@ public class TriggerDelivery : MonoBehaviour
 
     public PickupController pickupController;
     public AudioSource tickDelivery;
+    public AudioSource levelCompleteaudio;
+    public AudioSource mainTheme;
 
     public GameObject uiObject;
     public GameObject uiObject2;
@@ -38,8 +40,11 @@ public class TriggerDelivery : MonoBehaviour
             Debug.Log("CHIP ENTREGUE" + scoreScript.ScoreValue);
             if (scoreScript.ScoreValue >= 4)
             {
-                Time.timeScale = 0f;
+                Time.timeScale = 0.4f;
+                levelCompleteaudio.Play();
+                mainTheme.Stop();
                 StartCoroutine("waitLevel");
+                
             }
             else
             {

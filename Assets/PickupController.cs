@@ -35,9 +35,12 @@ public class PickupController : MonoBehaviour
     private Outline[] homeArray;
     private GameObject[] boxArray;
     private int rng;
+    private AudioSource woosh;
 
     private void Start()
     {
+        woosh = GetComponent<AudioSource>();
+
         homeArray = new Outline[] { outline1, outline2, outline3, outline4, outline5, outline6, outline7 };
         boxArray = new GameObject[] { box1, box2, box3, box4, box5, box6, box7 };
 
@@ -140,6 +143,7 @@ public class PickupController : MonoBehaviour
 
         //Gun carries momentum of player
         rb.velocity = player.GetComponent<Rigidbody>().velocity;
+        woosh.Play();
 
         //Add force when throwing weapon
         rb.AddForce(fpsCam.forward * dropForwardForce, ForceMode.Impulse);
