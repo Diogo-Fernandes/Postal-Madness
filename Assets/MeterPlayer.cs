@@ -11,6 +11,8 @@ public class MeterPlayer : MonoBehaviour
     public MeterScript meterScript;
     public GameObject gameOver;
 
+    public AudioSource gameOverSound;
+
     private float timedebug;
     private float fillTime =0f;
 
@@ -32,6 +34,10 @@ public class MeterPlayer : MonoBehaviour
         {
             Debug.Log("CHEGOU");
             gameOver.SetActive(true);
+            
+            timedebug = 8;
+            StartCoroutine(waitGameOver());
+            
         }
         else
         {
@@ -42,6 +48,7 @@ public class MeterPlayer : MonoBehaviour
 
     IEnumerator waitGameOver()
     {
+        //gameOverSound.Play();
         yield return new WaitForSeconds(3);
 
         SceneManager.LoadScene("StartMenu");

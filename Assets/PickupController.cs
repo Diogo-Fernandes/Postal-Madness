@@ -25,6 +25,7 @@ public class PickupController : MonoBehaviour
     public GameObject box6;
     public Outline outline7;
     public GameObject box7;
+    public GameObject trueNewsObj;
 
     public float pickUpRange;
     public float dropForwardForce, dropUpwardForce;
@@ -146,12 +147,13 @@ public class PickupController : MonoBehaviour
         woosh.Play();
 
         //Add force when throwing weapon
+ 
         rb.AddForce(fpsCam.forward * dropForwardForce, ForceMode.Impulse);
         rb.AddForce(fpsCam.up * dropUpwardForce, ForceMode.Impulse);
 
         //Add random torque rotation when throwing 
         /*float random = Random.Range(0f, 1f);
-        rb.AddTorque(new Vector3(random, random, random) * 10);*/
+        rb.AddTorque(new Vector3(random, random, random) * 5);*/
 
 
     }
